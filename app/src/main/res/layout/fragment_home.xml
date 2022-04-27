@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="65dp"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAbout"
+        android:text="Информация"
+        android:textColor="#FFF"
+        android:textAllCaps="false"
+        android:background="@drawable/button_home_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonRating"
+        android:text="Рейтинги"
+        android:textColor="#FFF"
+        android:textAllCaps="false"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_home_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDocs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Добавить документы"
+        android:textColor="#FFF"
+        android:textAllCaps="false"
+        android:background="@drawable/button_home_background"/>
+
+</LinearLayout>
