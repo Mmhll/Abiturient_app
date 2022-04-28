@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
@@ -28,7 +29,11 @@ class SignInFragment : Fragment() {
         if (Firebase.auth.currentUser != null){
             findNavController().navigate(R.id.action_signInFragment_to_signedFragment)
         }
-
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_signInFragment_to_navigation_home)
+            }
+        })
 
         binding!!.authButton.setOnClickListener {
             if (Authorization().auth(

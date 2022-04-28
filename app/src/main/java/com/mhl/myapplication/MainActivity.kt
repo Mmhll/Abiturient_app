@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-       /* var firebase = DatabaseFirebase()
+       /* var firebase = FirebaseThings()
 
         var database = firebase.instanceProfs()
         var firebaseData = ArrayList<Professions>()

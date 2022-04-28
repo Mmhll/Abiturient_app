@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mhl.myapplication.R
 import com.mhl.myapplication.classes.Authorization
-import com.mhl.myapplication.classes.DatabaseFirebase
+import com.mhl.myapplication.classes.FirebaseThings
 import com.mhl.myapplication.classes.Registration
 import com.mhl.myapplication.classes.User
 import com.mhl.myapplication.databinding.FragmentRegistrationBinding
@@ -103,7 +103,7 @@ class RegistrationFragment : Fragment() {
                             Firebase.auth.signInWithEmailAndPassword(emailString, passwordString)
                                 .addOnCompleteListener { it1 ->
                                     if (it1.isSuccessful) {
-                                        DatabaseFirebase().instanceUsers()
+                                        FirebaseThings().instanceUsers()
                                             .child(Firebase.auth.currentUser!!.uid).setValue(
                                             User(
                                                 birthday = birthdayString,
