@@ -7,5 +7,8 @@ class DatabaseFirebase {
     fun instanceProfs(): DatabaseReference {
         return FirebaseDatabase.getInstance().getReference("Professions")
     }
+    fun instanceUsers(): DatabaseReference {
+        return FirebaseDatabase.getInstance().getReference("Users")
+    }
 
 }
