@@ -51,12 +51,20 @@
         android:id="@+id/tourFragment"
         android:name="com.mhl.abiturient.ui.about.TourFragment"
         android:label="fragment_tour"
-        tools:layout="@layout/fragment_tour" />
+        tools:layout="@layout/fragment_tour" >
+        <action
+            android:id="@+id/action_tourFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/daysFragment"
         android:name="com.mhl.abiturient.ui.about.ProfessionsFragment"
         android:label="fragment_days"
-        tools:layout="@layout/fragment_professions" />
+        tools:layout="@layout/fragment_professions" >
+        <action
+            android:id="@+id/action_daysFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.mhl.abiturient.ui.documents.notentered.SignInFragment"

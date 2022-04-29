@@ -27,14 +27,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/buttonTour"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="#00FFFFFF"
-            android:minHeight="200dp"
-            android:scaleType="fitXY"
+            android:layout_height="200dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/imagebutton_background"
+            android:src="@drawable/virt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -57,10 +56,10 @@
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/buttonProfs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginTop="50dp"
+            android:src="@drawable/special"
             android:backgroundTint="#00FFFFFF"
-            android:minHeight="200dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tourText" />
@@ -79,6 +78,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonProfs" />
+
+        <ImageView
+            android:src="@drawable/days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/profsText"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
