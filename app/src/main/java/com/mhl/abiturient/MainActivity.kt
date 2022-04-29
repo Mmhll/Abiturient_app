@@ -1,11 +1,11 @@
-package com.mhl.myapplication
+package com.mhl.abiturient
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.mhl.myapplication.databinding.ActivityMainBinding
+import com.mhl.abiturient.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

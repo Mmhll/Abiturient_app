@@ -1,4 +1,4 @@
-package com.mhl.myapplication.classes
+package com.mhl.abiturient.classes
 
 import java.text.SimpleDateFormat
 import java.time.LocalDate

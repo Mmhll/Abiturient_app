@@ -1,4 +1,4 @@
-package com.mhl.myapplication.ui.documents.entered
+package com.mhl.abiturient.ui.documents.entered
 
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
@@ -6,7 +6,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +15,14 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.mhl.myapplication.R
-import com.mhl.myapplication.classes.Authorization
-import com.mhl.myapplication.classes.FirebaseThings
-import com.mhl.myapplication.classes.Registration
-import com.mhl.myapplication.classes.User
-import com.mhl.myapplication.databinding.FragmentSignedBinding
+import com.mhl.abiturient.classes.User
+import com.mhl.abiturient.R
+import com.mhl.abiturient.classes.Authorization
+import com.mhl.abiturient.classes.FirebaseThings
+import com.mhl.abiturient.classes.Registration
+import com.mhl.abiturient.databinding.FragmentSignedBinding
 import com.vicmikhailau.maskededittext.MaskedFormatter
 import com.vicmikhailau.maskededittext.MaskedWatcher
 

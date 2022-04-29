@@ -1,8 +1,7 @@
-package com.mhl.myapplication.ui.documents.notentered
+package com.mhl.abiturient.ui.documents.notentered
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mhl.myapplication.R
-import com.mhl.myapplication.classes.Authorization
-import com.mhl.myapplication.databinding.FragmentSignInBinding
+import com.mhl.abiturient.R
+import com.mhl.abiturient.classes.Authorization
+import com.mhl.abiturient.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
 

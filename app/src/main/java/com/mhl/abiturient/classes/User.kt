@@ -1,4 +1,4 @@
-package com.mhl.myapplication.classes
+package com.mhl.abiturient.classes
 
 data class User (
     var birthday : String? = "",

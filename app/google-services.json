@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:603867288304:android:f17f72c09f95f163b66835",
+        "mobilesdk_app_id": "1:603867288304:android:338dbad51ccf8522b66835",
         "android_client_info": {
-          "package_name": "com.mhl.myapplication"
+          "package_name": "com.mhl.abiturient"
         }
       },
       "oauth_client": [

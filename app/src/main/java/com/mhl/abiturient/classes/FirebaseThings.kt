@@ -1,4 +1,4 @@
-package com.mhl.myapplication.classes
+package com.mhl.abiturient.classes
 
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage

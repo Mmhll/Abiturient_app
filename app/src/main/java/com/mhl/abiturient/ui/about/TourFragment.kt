@@ -1,4 +1,4 @@
-package com.mhl.myapplication.ui.about
+package com.mhl.abiturient.ui.about
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import com.mhl.myapplication.databinding.FragmentTourBinding
+import com.mhl.abiturient.databinding.FragmentTourBinding
 
 class TourFragment : Fragment() {
 

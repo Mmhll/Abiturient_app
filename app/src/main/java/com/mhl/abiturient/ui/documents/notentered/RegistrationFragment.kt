@@ -1,4 +1,4 @@
-package com.mhl.myapplication.ui.documents.notentered
+package com.mhl.abiturient.ui.documents.notentered
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mhl.myapplication.R
-import com.mhl.myapplication.classes.Authorization
-import com.mhl.myapplication.classes.FirebaseThings
-import com.mhl.myapplication.classes.Registration
-import com.mhl.myapplication.classes.User
-import com.mhl.myapplication.databinding.FragmentRegistrationBinding
+import com.mhl.abiturient.classes.User
+import com.mhl.abiturient.R
+import com.mhl.abiturient.classes.Authorization
+import com.mhl.abiturient.classes.FirebaseThings
+import com.mhl.abiturient.classes.Registration
+import com.mhl.abiturient.databinding.FragmentRegistrationBinding
 import com.vicmikhailau.maskededittext.MaskedFormatter
 import com.vicmikhailau.maskededittext.MaskedWatcher
 

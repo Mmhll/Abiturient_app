@@ -1,4 +1,4 @@
-package com.mhl.myapplication.ui.notifications
+package com.mhl.abiturient.ui.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.mhl.myapplication.R
-import com.mhl.myapplication.databinding.FragmentNotificationsBinding
+import com.mhl.abiturient.R
+import com.mhl.abiturient.databinding.FragmentNotificationsBinding
 
 class NotificationsFragment : Fragment() {
 

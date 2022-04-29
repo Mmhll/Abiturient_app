@@ -1,4 +1,4 @@
-package com.mhl.myapplication.ui.home
+package com.mhl.abiturient.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.mhl.myapplication.R
-import com.mhl.myapplication.databinding.FragmentHomeBinding
+import com.mhl.abiturient.R
+import com.mhl.abiturient.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 

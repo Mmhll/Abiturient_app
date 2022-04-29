@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.mhl.myapplication.ui.home.HomeFragment"
+        android:name="com.mhl.abiturient.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.mhl.myapplication.ui.about.AboutFragment"
+        android:name="com.mhl.abiturient.ui.about.AboutFragment"
         android:label="@string/title_dashboard"
 
         tools:layout="@layout/fragment_about" >
@@ -40,7 +40,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.mhl.myapplication.ui.notifications.NotificationsFragment"
+        android:name="com.mhl.abiturient.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" >
         <action
@@ -49,17 +49,17 @@
     </fragment>
     <fragment
         android:id="@+id/tourFragment"
-        android:name="com.mhl.myapplication.ui.about.TourFragment"
+        android:name="com.mhl.abiturient.ui.about.TourFragment"
         android:label="fragment_tour"
         tools:layout="@layout/fragment_tour" />
     <fragment
         android:id="@+id/daysFragment"
-        android:name="com.mhl.myapplication.ui.about.DaysFragment"
+        android:name="com.mhl.abiturient.ui.about.ProfessionsFragment"
         android:label="fragment_days"
-        tools:layout="@layout/fragment_days" />
+        tools:layout="@layout/fragment_professions" />
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.mhl.myapplication.ui.documents.notentered.SignInFragment"
+        android:name="com.mhl.abiturient.ui.documents.notentered.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/signedFragment"
-        android:name="com.mhl.myapplication.ui.documents.entered.SignedFragment"
+        android:name="com.mhl.abiturient.ui.documents.entered.SignedFragment"
         android:label="fragment_signed"
         tools:layout="@layout/fragment_signed" >
         <action
@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.mhl.myapplication.ui.documents.notentered.RegistrationFragment"
+        android:name="com.mhl.abiturient.ui.documents.notentered.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action

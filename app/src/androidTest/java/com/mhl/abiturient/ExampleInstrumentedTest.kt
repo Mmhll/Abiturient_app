@@ -1,4 +1,4 @@
-package com.mhl.myapplication
+package com.mhl.abiturient
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
