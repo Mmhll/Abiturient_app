@@ -2,6 +2,8 @@ package com.mhl.abiturient.classes
 
 data class Professions(
     val about : String? = "",
+    val budget : String? = "",
+    val code : String? = "",
     val image : String? = "",
     val name : String? = "",
     val years : ArrayList<Years>? = null

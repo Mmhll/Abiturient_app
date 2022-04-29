@@ -15,7 +15,7 @@
             app:destination="@id/aboutFragment" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_notifications"
-            app:destination="@id/navigation_notifications" />
+            app:destination="@id/navigation_rating" />
         <action
             android:id="@+id/action_navigation_home_to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -31,20 +31,20 @@
             android:id="@+id/action_aboutFragment_to_tourFragment"
             app:destination="@id/tourFragment" />
         <action
-            android:id="@+id/action_aboutFragment_to_daysFragment"
-            app:destination="@id/daysFragment" />
+            android:id="@+id/action_aboutFragment_to_professionsFragment"
+            app:destination="@id/professionsFragment" />
         <action
             android:id="@+id/action_aboutFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.mhl.abiturient.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" >
+        android:id="@+id/navigation_rating"
+        android:name="com.mhl.abiturient.ui.rating.RatingFragment"
+        android:label="Рейтинг"
+        tools:layout="@layout/fragment_rating" >
         <action
-            android:id="@+id/action_navigation_notifications_to_navigation_home"
+            android:id="@+id/action_navigation_rating_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
     <fragment
@@ -57,13 +57,16 @@
             app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
-        android:id="@+id/daysFragment"
+        android:id="@+id/professionsFragment"
         android:name="com.mhl.abiturient.ui.about.ProfessionsFragment"
-        android:label="fragment_days"
+        android:label="fragment_professions"
         tools:layout="@layout/fragment_professions" >
         <action
-            android:id="@+id/action_daysFragment_to_aboutFragment"
+            android:id="@+id/action_professionsFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_professionsFragment_to_oneProfessionFragment"
+            app:destination="@id/oneProfessionFragment" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -100,5 +103,14 @@
         <action
             android:id="@+id/action_registrationFragment_to_signedFragment"
             app:destination="@id/signedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneProfessionFragment"
+        android:name="com.mhl.abiturient.ui.about.OneProfessionFragment"
+        android:label="fragment_one_profession"
+        tools:layout="@layout/fragment_one_profession" >
+        <action
+            android:id="@+id/action_oneProfessionFragment_to_professionsFragment"
+            app:destination="@id/professionsFragment" />
     </fragment>
 </navigation>

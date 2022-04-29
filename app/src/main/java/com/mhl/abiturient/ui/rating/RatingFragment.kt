@@ -1,9 +1,7 @@
-package com.mhl.abiturient.ui.about
+package com.mhl.abiturient.ui.rating
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,22 +12,29 @@ import com.mhl.abiturient.R
 import com.mhl.abiturient.classes.FirebaseThings
 import com.mhl.abiturient.classes.Professions
 import com.mhl.abiturient.classes.ProfsAdapter
-import com.mhl.abiturient.databinding.FragmentProfessionsBinding
+import com.mhl.abiturient.databinding.FragmentRatingBinding
 
-class ProfessionsFragment : Fragment() {
-    private var _binding : FragmentProfessionsBinding? = null
+class RatingFragment : Fragment() {
+
+    private var _binding: FragmentRatingBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentProfessionsBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentRatingBinding.inflate(inflater, container, false)
+        val root: View = binding.root
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_professionsFragment_to_aboutFragment)
+                findNavController().navigate(R.id.action_navigation_rating_to_navigation_home)
             }
         })
+
         var professions = ArrayList<Professions>()
         FirebaseThings().instanceProfs().get().addOnSuccessListener {
             if (it.exists()){
@@ -42,13 +47,17 @@ class ProfessionsFragment : Fragment() {
                     override fun onItemClick(position: Int) {
                         var prefs = requireActivity().getSharedPreferences("Profession", Context.MODE_PRIVATE)
                         prefs.edit().putInt("position", position).apply()
-                        findNavController().navigate(R.id.action_professionsFragment_to_oneProfessionFragment)
                     }
 
                 })
-                binding.profsRecycler.adapter = adapter
+                binding.ratingRecycler.adapter = adapter
             }
         }
-        return binding.root
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

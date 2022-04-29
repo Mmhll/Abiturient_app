@@ -50,7 +50,7 @@ class AboutFragment : Fragment() {
             findNavController().navigate(R.id.action_aboutFragment_to_tourFragment)
         }
         binding.buttonProfs.setOnClickListener {
-            findNavController().navigate(R.id.action_aboutFragment_to_daysFragment)
+            findNavController().navigate(R.id.action_aboutFragment_to_professionsFragment)
         }
         return binding.root
     }

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2075" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/drawable/background_textview_bottom.xml" value="0.3635" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/drawable/button_home_background.xml" value="0.303" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/drawable/imagebutton_background.xml" value="0.2075" />
@@ -13,11 +14,15 @@
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_documents.xml" value="0.3625" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_notifications.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_one_profession.xml" value="0.3625" />
+        <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_one_rating.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_professions.xml" value="0.29743589743589743" />
+        <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_rating.xml" value="0.3319746376811594" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_registration.xml" value="0.33" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_sign_in.xml" value="0.5" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_signed.xml" value="0.3625" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/fragment_tour.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/layout/recycler_profs_item.xml" value="0.3319746376811594" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24" />
         <entry key="..\:/Users/Mhl/AndroidStudioProjects/MyApplication23/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.24" />

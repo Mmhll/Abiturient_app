@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.mhl.abiturient.classes.FirebaseThings
+import com.mhl.abiturient.classes.Professions
+import com.mhl.abiturient.classes.Years
 import com.mhl.abiturient.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,24 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
-       /* var firebase = FirebaseThings()
-
-        var database = firebase.instanceProfs()
-        var firebaseData = ArrayList<Professions>()
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                if (snapshot.exists()) {
-                    for (snap in snapshot.children) {
-                        firebaseData.add(snap.getValue(Professions::class.java)!!)
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        })*/
 
         setContentView(binding.root)
         val navView: BottomNavigationView = binding.navView
