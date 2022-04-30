@@ -13,13 +13,14 @@ import com.mhl.abiturient.databinding.FragmentTourBinding
 
 class TourFragment : Fragment() {
 
-    private var binding : FragmentTourBinding? = null
+    private var _binding : FragmentTourBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTourBinding.inflate(inflater)
+        _binding = FragmentTourBinding.inflate(inflater)
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -28,14 +29,14 @@ class TourFragment : Fragment() {
         })
 
         var webView = WebViewClient()
-        binding!!.tourWeb.webViewClient = webView
-        binding!!.tourWeb.loadUrl("http://vt.tpk-1.ru/view.html?rm=10000")
-        binding!!.tourWeb.settings.javaScriptEnabled = true
-        return binding!!.root
+        binding.tourWeb.webViewClient = webView
+        binding.tourWeb.loadUrl("http://vt.tpk-1.ru/view.html?rm=10000")
+        binding.tourWeb.settings.javaScriptEnabled = true
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
     }
 }

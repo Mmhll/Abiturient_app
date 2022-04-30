@@ -15,15 +15,16 @@ import com.mhl.abiturient.classes.Authorization
 import com.mhl.abiturient.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
-
-    private var binding: FragmentSignInBinding? = null
+    
+    private var _binding: FragmentSignInBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSignInBinding.inflate(inflater)
+        _binding = FragmentSignInBinding.inflate(inflater)
 
         if (Firebase.auth.currentUser != null){
             findNavController().navigate(R.id.action_signInFragment_to_signedFragment)
@@ -34,15 +35,15 @@ class SignInFragment : Fragment() {
             }
         })
 
-        binding!!.authButton.setOnClickListener {
+        binding.authButton.setOnClickListener {
             if (Authorization().auth(
-                    binding!!.loginEmail.text.toString(),
-                    binding!!.loginPassword.text.toString()
+                    binding.loginEmail.text.toString(),
+                    binding.loginPassword.text.toString()
                 )
             ) {
                 Firebase.auth.signInWithEmailAndPassword(
-                    binding!!.loginEmail.text.toString(),
-                    binding!!.loginPassword.text.toString()
+                    binding.loginEmail.text.toString(),
+                    binding.loginPassword.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         findNavController().navigate(R.id.action_signInFragment_to_signedFragment)
@@ -61,10 +62,15 @@ class SignInFragment : Fragment() {
             }
         }
 
-        binding!!.registrationButton.setOnClickListener {
+        binding.registrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_registrationFragment)
         }
 
-        return binding!!.root
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

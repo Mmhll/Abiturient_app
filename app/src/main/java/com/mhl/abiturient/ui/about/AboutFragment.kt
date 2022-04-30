@@ -31,7 +31,7 @@ class AboutFragment : Fragment() {
                 findNavController().navigate(R.id.action_aboutFragment_to_navigation_home)
             }
         })
-        Glide.with(this)
+        /*Glide.with(this)
             .load(R.drawable.virt)
             .apply(
                 RequestOptions().transform(
@@ -39,12 +39,12 @@ class AboutFragment : Fragment() {
                 )
             ).into(binding.buttonTour)
         Glide.with(this)
-            .load(R.drawable.special)
+            .load(R.drawable.img)
             .apply(
                 RequestOptions().transform(
                     GranularRoundedCorners(100f, 100f, 0f, 0f)
                 )
-            ).into(binding.buttonProfs)
+            ).into(binding.buttonProfs)*/
 
         binding.buttonTour.setOnClickListener {
             findNavController().navigate(R.id.action_aboutFragment_to_tourFragment)

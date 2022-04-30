@@ -1,5 +1,6 @@
 package com.mhl.abiturient.ui.rating
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,8 +19,6 @@ class RatingFragment : Fragment() {
 
     private var _binding: FragmentRatingBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -46,7 +45,31 @@ class RatingFragment : Fragment() {
 
                     override fun onItemClick(position: Int) {
                         var prefs = requireActivity().getSharedPreferences("Profession", Context.MODE_PRIVATE)
-                        prefs.edit().putInt("position", position).apply()
+                        prefs.edit().putString("name", professions[position].name).apply()
+                        if (professions[position].years!!.size <=  1) {
+                            AlertDialog.Builder(requireContext())
+                                .setMessage("Выберите год")
+                                .setPositiveButton(professions[position].years!![0].year) { _, _ ->
+                                    prefs.edit().putInt("year", 0).apply()
+                                    findNavController().navigate(R.id.action_professionsFragment_to_oneProfessionFragment)
+                                }
+                                .create()
+                                .show()
+                        }
+                        else {
+                            AlertDialog.Builder(requireContext())
+                                .setMessage("Выберите год")
+                                .setPositiveButton(professions[position].years!![0].year) { _, _ ->
+                                    prefs.edit().putInt("year", 0).apply()
+                                    findNavController().navigate(R.id.action_navigation_rating_to_oneRatingFragment)
+                                }
+                                .setNegativeButton(professions[position].years!![1].year) { _,_ ->
+                                    prefs.edit().putInt("year", 1).apply()
+                                    findNavController().navigate(R.id.action_navigation_rating_to_oneRatingFragment)
+                                }
+                                .create()
+                                .show()
+                        }
                     }
 
                 })

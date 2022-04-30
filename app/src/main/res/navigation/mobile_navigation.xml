@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_navigation_rating_to_navigation_home"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_rating_to_oneRatingFragment"
+            app:destination="@id/oneRatingFragment" />
     </fragment>
     <fragment
         android:id="@+id/tourFragment"
@@ -112,5 +115,14 @@
         <action
             android:id="@+id/action_oneProfessionFragment_to_professionsFragment"
             app:destination="@id/professionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneRatingFragment"
+        android:name="com.mhl.abiturient.ui.rating.OneRatingFragment"
+        android:label="fragment_one_rating"
+        tools:layout="@layout/fragment_one_rating" >
+        <action
+            android:id="@+id/action_oneRatingFragment_to_navigation_rating"
+            app:destination="@id/navigation_rating" />
     </fragment>
 </navigation>

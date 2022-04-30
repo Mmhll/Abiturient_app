@@ -1,5 +1,6 @@
 package com.mhl.abiturient.ui.about
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -17,7 +18,7 @@ import com.mhl.abiturient.classes.ProfsAdapter
 import com.mhl.abiturient.databinding.FragmentProfessionsBinding
 
 class ProfessionsFragment : Fragment() {
-    private var _binding : FragmentProfessionsBinding? = null
+    private var _binding: FragmentProfessionsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,15 +33,18 @@ class ProfessionsFragment : Fragment() {
         })
         var professions = ArrayList<Professions>()
         FirebaseThings().instanceProfs().get().addOnSuccessListener {
-            if (it.exists()){
-                for (snap in it.children){
+            if (it.exists()) {
+                for (snap in it.children) {
                     professions.add(snap.getValue(Professions::class.java)!!)
                 }
                 var adapter = ProfsAdapter(requireContext(), professions)
-                adapter.setOnItemClickListener(object : ProfsAdapter.onItemClickListener{
+                adapter.setOnItemClickListener(object : ProfsAdapter.onItemClickListener {
 
                     override fun onItemClick(position: Int) {
-                        var prefs = requireActivity().getSharedPreferences("Profession", Context.MODE_PRIVATE)
+                        var prefs = requireActivity().getSharedPreferences(
+                            "Profession",
+                            Context.MODE_PRIVATE
+                        )
                         prefs.edit().putInt("position", position).apply()
                         findNavController().navigate(R.id.action_professionsFragment_to_oneProfessionFragment)
                     }
@@ -50,5 +54,10 @@ class ProfessionsFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

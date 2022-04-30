@@ -31,7 +31,7 @@
             android:id="@+id/buttonTour"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/imagebutton_background"
             android:src="@drawable/virt"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonTour" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageButton
             android:id="@+id/buttonProfs"
             android:layout_width="match_parent"
             android:layout_height="200dp"

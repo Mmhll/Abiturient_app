@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/black"
             android:background="@drawable/input_background"
             android:hint="Email"

@@ -22,24 +22,25 @@ import com.vicmikhailau.maskededittext.MaskedWatcher
 
 class RegistrationFragment : Fragment() {
 
-    private var binding: FragmentRegistrationBinding? = null
+    private var _binding: FragmentRegistrationBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRegistrationBinding.inflate(inflater)
+        _binding = FragmentRegistrationBinding.inflate(inflater)
         var reg = Registration()
 
 
         var maskFormatter = MaskedFormatter("##.##.####")
-        binding!!.registrationBirthday.addTextChangedListener(
+        binding.registrationBirthday.addTextChangedListener(
             MaskedWatcher(
                 maskFormatter,
-                binding!!.registrationBirthday
+                binding.registrationBirthday
             )
         )
-        binding!!.registrationBirthday.addTextChangedListener(object : TextWatcher {
+        binding.registrationBirthday.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
@@ -50,17 +51,17 @@ class RegistrationFragment : Fragment() {
 
             override fun afterTextChanged(p0: Editable?) {
                 if (p0!!.length == 10 && !reg.validateDate(p0.toString())) {
-                    binding!!.registrationBirthday.error = "Вы ввели неверную дату"
-                    binding!!.registrationButton.isClickable = false
-                } else if (p0!!.length == 10 && reg.validateDate(p0.toString())) {
-                    binding!!.registrationButton.isClickable = true
+                    binding.registrationBirthday.error = "Вы ввели неверную дату"
+                    binding.registrationButton.isClickable = false
+                } else if (p0.length == 10 && reg.validateDate(p0.toString())) {
+                    binding.registrationButton.isClickable = true
                 }
 
             }
 
         })
 
-        binding!!.registrationPassword.addTextChangedListener(object : TextWatcher {
+        binding.registrationPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
             }
@@ -71,8 +72,8 @@ class RegistrationFragment : Fragment() {
 
             override fun afterTextChanged(p0: Editable?) {
                 if (!Authorization().checkPassword(p0.toString())) {
-                    binding!!.registrationButton.isClickable = false
-                    binding!!.registrationPassword.error =
+                    binding.registrationButton.isClickable = false
+                    binding.registrationPassword.error =
                         "В пароле меньше 6 символов, либо больше 24"
                 }
             }
@@ -80,14 +81,14 @@ class RegistrationFragment : Fragment() {
         })
 
 
-        binding!!.registrationButton.setOnClickListener {
-            val birthdayString = binding!!.registrationBirthday.text.toString()
-            val emailString = binding!!.registrationEmail.text.toString()
-            val nameString = binding!!.registrationName.text.toString()
-            val surnameString = binding!!.registrationSurname.text.toString()
-            val patronymicString = binding!!.registrationPatronymic.text.toString()
-            val passwordString = binding!!.registrationPassword.text.toString()
-            val rePasswordString = binding!!.registrationRePassword.text.toString()
+        binding.registrationButton.setOnClickListener {
+            val birthdayString = binding.registrationBirthday.text.toString()
+            val emailString = binding.registrationEmail.text.toString()
+            val nameString = binding.registrationName.text.toString()
+            val surnameString = binding.registrationSurname.text.toString()
+            val patronymicString = binding.registrationPatronymic.text.toString()
+            val passwordString = binding.registrationPassword.text.toString()
+            val rePasswordString = binding.registrationRePassword.text.toString()
 
             if (reg.validateInitials(nameString)
                 && reg.validateInitials(surnameString)
@@ -130,6 +131,11 @@ class RegistrationFragment : Fragment() {
                     }
             }
         }
-        return binding!!.root
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
