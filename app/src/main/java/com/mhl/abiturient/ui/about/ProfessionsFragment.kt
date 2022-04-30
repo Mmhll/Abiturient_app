@@ -18,14 +18,13 @@ import com.mhl.abiturient.classes.ProfsAdapter
 import com.mhl.abiturient.databinding.FragmentProfessionsBinding
 
 class ProfessionsFragment : Fragment() {
-    private var _binding: FragmentProfessionsBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentProfessionsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProfessionsBinding.inflate(inflater, container, false)
+        binding = FragmentProfessionsBinding.inflate(inflater, container, false)
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.action_professionsFragment_to_aboutFragment)
@@ -37,7 +36,7 @@ class ProfessionsFragment : Fragment() {
                 for (snap in it.children) {
                     professions.add(snap.getValue(Professions::class.java)!!)
                 }
-                var adapter = ProfsAdapter(requireContext(), professions)
+                var adapter = ProfsAdapter(this, professions)
                 adapter.setOnItemClickListener(object : ProfsAdapter.onItemClickListener {
 
                     override fun onItemClick(position: Int) {
@@ -50,14 +49,19 @@ class ProfessionsFragment : Fragment() {
                     }
 
                 })
-                binding.profsRecycler.adapter = adapter
+                try {
+                    binding!!.profsRecycler.adapter = adapter
+                }
+                catch (e : NullPointerException){
+
+                }
             }
         }
-        return binding.root
+        return binding!!.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }

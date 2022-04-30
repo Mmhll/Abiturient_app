@@ -1,6 +1,7 @@
 package com.mhl.abiturient.ui.about
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.RoundedCorner
 import android.view.View
@@ -14,49 +15,51 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.mhl.abiturient.R
 import com.mhl.abiturient.databinding.FragmentAboutBinding
+import java.lang.IllegalStateException
+import kotlin.jvm.Throws
 
 class AboutFragment : Fragment() {
 
-    private var _binding: FragmentAboutBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentAboutBinding? = null
 
+    @Throws(IllegalStateException::class)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+        binding = FragmentAboutBinding.inflate(inflater, container, false)
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.action_aboutFragment_to_navigation_home)
             }
         })
-        /*Glide.with(this)
-            .load(R.drawable.virt)
-            .apply(
-                RequestOptions().transform(
-                    GranularRoundedCorners(100f, 100f, 0f, 0f)
-                )
-            ).into(binding.buttonTour)
-        Glide.with(this)
-            .load(R.drawable.img)
-            .apply(
-                RequestOptions().transform(
-                    GranularRoundedCorners(100f, 100f, 0f, 0f)
-                )
-            ).into(binding.buttonProfs)*/
+        object : CountDownTimer(100, 100) {
+            override fun onTick(p0: Long) {
 
-        binding.buttonTour.setOnClickListener {
-            findNavController().navigate(R.id.action_aboutFragment_to_tourFragment)
-        }
-        binding.buttonProfs.setOnClickListener {
-            findNavController().navigate(R.id.action_aboutFragment_to_professionsFragment)
-        }
-        return binding.root
+            }
+
+            override fun onFinish() {
+                context!!.let {
+
+                    binding!!.buttonTour.setOnClickListener {
+                        findNavController().navigate(R.id.action_aboutFragment_to_tourFragment)
+                    }
+                    binding!!.buttonProfs.setOnClickListener {
+                        findNavController().navigate(R.id.action_aboutFragment_to_professionsFragment)
+                    }
+                }
+            }
+
+        }.start()
+
+
+
+        return binding!!.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }

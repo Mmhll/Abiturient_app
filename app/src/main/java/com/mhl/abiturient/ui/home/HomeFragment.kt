@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.mhl.abiturient.R
 import com.mhl.abiturient.databinding.FragmentHomeBinding
+import java.lang.IllegalStateException
+import kotlin.jvm.Throws
 
 class HomeFragment : Fragment() {
 
@@ -19,10 +21,12 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.buttonAbout.setOnClickListener{
+        binding.buttonAbout.setOnClickListener {
             it.findNavController().navigate(R.id.action_navigation_home_to_navigation_dashboard)
         }
         binding.buttonRating.setOnClickListener {

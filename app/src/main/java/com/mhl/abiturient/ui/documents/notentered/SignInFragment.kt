@@ -2,6 +2,7 @@ package com.mhl.abiturient.ui.documents.notentered
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,18 +16,16 @@ import com.mhl.abiturient.classes.Authorization
 import com.mhl.abiturient.databinding.FragmentSignInBinding
 
 class SignInFragment : Fragment() {
-    
-    private var _binding: FragmentSignInBinding? = null
-    private val binding get() = _binding!!
+
+    private var binding: FragmentSignInBinding? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSignInBinding.inflate(inflater)
-
-        if (Firebase.auth.currentUser != null){
+        binding = FragmentSignInBinding.inflate(inflater)
+        if (Firebase.auth.currentUser != null) {
             findNavController().navigate(R.id.action_signInFragment_to_signedFragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
@@ -35,15 +34,15 @@ class SignInFragment : Fragment() {
             }
         })
 
-        binding.authButton.setOnClickListener {
+        binding!!.authButton.setOnClickListener {
             if (Authorization().auth(
-                    binding.loginEmail.text.toString(),
-                    binding.loginPassword.text.toString()
+                    binding!!.loginEmail.text.toString(),
+                    binding!!.loginPassword.text.toString()
                 )
             ) {
                 Firebase.auth.signInWithEmailAndPassword(
-                    binding.loginEmail.text.toString(),
-                    binding.loginPassword.text.toString()
+                    binding!!.loginEmail.text.toString(),
+                    binding!!.loginPassword.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         findNavController().navigate(R.id.action_signInFragment_to_signedFragment)
@@ -62,15 +61,16 @@ class SignInFragment : Fragment() {
             }
         }
 
-        binding.registrationButton.setOnClickListener {
+        binding!!.registrationButton.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_registrationFragment)
         }
 
-        return binding.root
+
+        return binding!!.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }

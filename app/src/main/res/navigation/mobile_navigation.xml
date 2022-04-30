@@ -106,6 +106,9 @@
         <action
             android:id="@+id/action_registrationFragment_to_signedFragment"
             app:destination="@id/signedFragment" />
+        <action
+            android:id="@+id/action_registrationFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/oneProfessionFragment"

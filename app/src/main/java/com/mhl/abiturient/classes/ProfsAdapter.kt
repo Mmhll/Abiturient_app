@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -14,7 +15,7 @@ import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.mhl.abiturient.R
 
-class ProfsAdapter(val context : Context, val data: ArrayList<Professions>) : RecyclerView.Adapter<ProfsAdapter.VH>() {
+class ProfsAdapter(val fragment : Fragment, val data: ArrayList<Professions>) : RecyclerView.Adapter<ProfsAdapter.VH>() {
 
 
     private lateinit var myListener : onItemClickListener
@@ -37,11 +38,11 @@ class ProfsAdapter(val context : Context, val data: ArrayList<Professions>) : Re
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        return VH(LayoutInflater.from(context).inflate(R.layout.recycler_profs_item, parent, false), myListener)
+        return VH(LayoutInflater.from(parent.context).inflate(R.layout.recycler_profs_item, parent, false), myListener)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        Glide.with(context).load(data[position].image).transform(FitCenter(), RoundedCorners(20)).into(holder.image)
+        Glide.with(fragment).load(data[position].image).transform(FitCenter(), RoundedCorners(20)).into(holder.image)
         holder.text.text = data[position].name
     }
 

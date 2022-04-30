@@ -25,11 +25,13 @@ import com.mhl.abiturient.classes.Registration
 import com.mhl.abiturient.databinding.FragmentSignedBinding
 import com.vicmikhailau.maskededittext.MaskedFormatter
 import com.vicmikhailau.maskededittext.MaskedWatcher
+import java.lang.IllegalStateException
+import kotlin.jvm.Throws
 
 class SignedFragment : Fragment() {
     private var _binding: FragmentSignedBinding? = null
     private val binding get() = _binding!!
-    
+
     private var imageUri: Uri? = null
     private var doc = ""
     private var url = ""
@@ -37,6 +39,7 @@ class SignedFragment : Fragment() {
 
     private var userData: User? = null
 
+    @Throws(IllegalStateException::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -97,8 +100,7 @@ class SignedFragment : Fragment() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
-                        }
-                        else {
+                        } else {
                             Toast.makeText(
                                 requireContext(),
                                 "Пароль должен быть больше 5 символов и меньше 25 символов",

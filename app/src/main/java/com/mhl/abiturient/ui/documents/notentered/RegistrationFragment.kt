@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
@@ -31,7 +32,11 @@ class RegistrationFragment : Fragment() {
     ): View {
         _binding = FragmentRegistrationBinding.inflate(inflater)
         var reg = Registration()
-
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_registrationFragment_to_signInFragment)
+            }
+        })
 
         var maskFormatter = MaskedFormatter("##.##.####")
         binding.registrationBirthday.addTextChangedListener(
@@ -82,53 +87,60 @@ class RegistrationFragment : Fragment() {
 
 
         binding.registrationButton.setOnClickListener {
-            val birthdayString = binding.registrationBirthday.text.toString()
-            val emailString = binding.registrationEmail.text.toString()
-            val nameString = binding.registrationName.text.toString()
-            val surnameString = binding.registrationSurname.text.toString()
-            val patronymicString = binding.registrationPatronymic.text.toString()
-            val passwordString = binding.registrationPassword.text.toString()
-            val rePasswordString = binding.registrationRePassword.text.toString()
+            try {
+                val birthdayString = binding.registrationBirthday.text.toString()
+                val emailString = binding.registrationEmail.text.toString()
+                val nameString = binding.registrationName.text.toString()
+                val surnameString = binding.registrationSurname.text.toString()
+                val patronymicString = binding.registrationPatronymic.text.toString()
+                val passwordString = binding.registrationPassword.text.toString()
+                val rePasswordString = binding.registrationRePassword.text.toString()
 
-            if (reg.validateInitials(nameString)
-                && reg.validateInitials(surnameString)
-                && reg.validateInitials(patronymicString)
-                && reg.validateRepeatPassword(passwordString, rePasswordString)
-                && Authorization().checkEmail(emailString)
-                && reg.validateDate(birthdayString)
-            ) {
-                Firebase.auth.createUserWithEmailAndPassword(emailString, passwordString)
-                    .addOnCompleteListener { it0 ->
-                        if (it0.isSuccessful) {
+                if (reg.validateInitials(nameString)
+                    && reg.validateInitials(surnameString)
+                    && reg.validateInitials(patronymicString)
+                    && reg.validateRepeatPassword(passwordString, rePasswordString)
+                    && Authorization().checkEmail(emailString)
+                    && reg.validateDate(birthdayString)
+                ) {
+                    Firebase.auth.createUserWithEmailAndPassword(emailString, passwordString)
+                        .addOnCompleteListener { it0 ->
+                            if (it0.isSuccessful) {
 
-                            Firebase.auth.signInWithEmailAndPassword(emailString, passwordString)
-                                .addOnCompleteListener { it1 ->
-                                    if (it1.isSuccessful) {
-                                        FirebaseThings().instanceUsers()
-                                            .child(Firebase.auth.currentUser!!.uid).setValue(
-                                            User(
-                                                birthday = birthdayString,
-                                                email = emailString,
-                                                name = nameString,
-                                                surname = surnameString,
-                                                patronymic = patronymicString
-                                            )
-                                        ).addOnCompleteListener {
-                                            if (it.isSuccessful) {
-                                                findNavController().navigate(R.id.action_registrationFragment_to_signedFragment)
-                                            }
+                                Firebase.auth.signInWithEmailAndPassword(
+                                    emailString,
+                                    passwordString
+                                )
+                                    .addOnCompleteListener { it1 ->
+                                        if (it1.isSuccessful) {
+                                            FirebaseThings().instanceUsers()
+                                                .child(Firebase.auth.currentUser!!.uid).setValue(
+                                                    User(
+                                                        birthday = birthdayString,
+                                                        email = emailString,
+                                                        name = nameString,
+                                                        surname = surnameString,
+                                                        patronymic = patronymicString
+                                                    )
+                                                ).addOnCompleteListener {
+                                                    if (it.isSuccessful) {
+                                                        findNavController().navigate(R.id.action_registrationFragment_to_signedFragment)
+                                                    }
+                                                }
+
                                         }
-
                                     }
-                                }
 
-                        } else {
-                            AlertDialog.Builder(requireContext())
-                                .setMessage("Пользователь уже зарегистрирован")
-                                .create()
-                                .show()
+                            } else {
+                                AlertDialog.Builder(requireContext())
+                                    .setMessage("Пользователь уже зарегистрирован")
+                                    .create()
+                                    .show()
+                            }
                         }
-                    }
+                }
+            } catch (e : NullPointerException){
+
             }
         }
         return binding.root
