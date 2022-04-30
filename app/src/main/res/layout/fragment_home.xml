@@ -4,18 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="65dp"
+    android:layout_marginHorizontal="40dp"
     tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:paddingBottom="15dp"
+        android:text="Добро пожаловать"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Прием ведется только на базе 11 классов.\n\nНачало работы приёмной комиссии - 20 июня 2022"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:paddingBottom="40dp"
+
+        android:textSize="20sp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAbout"
         android:text="Информация"
         android:textColor="#FFF"
         android:textAllCaps="false"
+        android:fontFamily="@font/bold"
+        android:layout_marginHorizontal="20dp"
         android:background="@drawable/button_home_background"
         android:layout_width="match_parent"
+        android:textSize="20sp"
         android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -23,7 +46,10 @@
         android:text="Рейтинги"
         android:textColor="#FFF"
         android:textAllCaps="false"
+        android:fontFamily="@font/bold"
         android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
         android:background="@drawable/button_home_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -33,7 +59,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/bold"
+        android:textSize="20sp"
         android:text="Добавить документы"
+        android:layout_marginHorizontal="20dp"
         android:textColor="#FFF"
         android:textAllCaps="false"
         android:background="@drawable/button_home_background"/>
