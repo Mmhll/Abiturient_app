@@ -58,7 +58,7 @@ class RatingFragment : Fragment() {
                                 .setMessage("Выберите год")
                                 .setPositiveButton(professions[position].years!![0].year) { _, _ ->
                                     prefs.edit().putInt("year", 0).apply()
-                                    findNavController().navigate(R.id.action_professionsFragment_to_oneProfessionFragment)
+                                    findNavController().navigate(R.id.action_navigation_rating_to_oneRatingFragment)
                                 }
                                 .create()
                                 .show()

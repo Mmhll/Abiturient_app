@@ -26,11 +26,11 @@ import com.mhl.abiturient.databinding.FragmentSignedBinding
 import com.vicmikhailau.maskededittext.MaskedFormatter
 import com.vicmikhailau.maskededittext.MaskedWatcher
 import java.lang.IllegalStateException
+import java.lang.NullPointerException
 import kotlin.jvm.Throws
 
 class SignedFragment : Fragment() {
-    private var _binding: FragmentSignedBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentSignedBinding? = null
 
     private var imageUri: Uri? = null
     private var doc = ""
@@ -44,31 +44,31 @@ class SignedFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSignedBinding.inflate(inflater)
+        binding = FragmentSignedBinding.inflate(inflater)
         var maskFormatter = MaskedFormatter("##.##.####")
-        binding.signedBirthday.addTextChangedListener(
+        binding!!.signedBirthday.addTextChangedListener(
             MaskedWatcher(
                 maskFormatter,
-                binding.signedBirthday
+                binding!!.signedBirthday
             )
         )
         FirebaseThings().instanceUsers().child(Firebase.auth.uid!!).get().addOnSuccessListener {
             if (it.exists()) {
                 userData = it.getValue(User::class.java)!!
-                binding.signedEmail.text = userData!!.email
-                binding.signedName.setText(userData!!.name)
-                binding.signedSurname.setText(userData!!.surname)
-                binding.signedPatronymic.setText(userData!!.patronymic)
-                binding.signedBirthday.setText(userData!!.birthday)
+                binding!!.signedEmail.text = userData!!.email
+                binding!!.signedName.setText(userData!!.name)
+                binding!!.signedSurname.setText(userData!!.surname)
+                binding!!.signedPatronymic.setText(userData!!.patronymic)
+                binding!!.signedBirthday.setText(userData!!.birthday)
 
                 if (userData!!.certificate!!.isNotEmpty()) {
-                    binding.certificateIsAdded.text = "Документ добавлен"
+                    binding!!.certificateIsAdded.text = "Документ добавлен"
                 }
                 if (userData!!.passport!!.isNotEmpty()) {
-                    binding.passportIsAdded.text = "Документ добавлен"
+                    binding!!.passportIsAdded.text = "Документ добавлен"
                 }
                 if (userData!!.snils!!.isNotEmpty()) {
-                    binding.snilsIsAdded.text = "Документ добавлен"
+                    binding!!.snilsIsAdded.text = "Документ добавлен"
                 }
             }
         }
@@ -78,7 +78,7 @@ class SignedFragment : Fragment() {
             }
         })
 
-        binding.changePasswordButton.setOnClickListener {
+        binding!!.changePasswordButton.setOnClickListener {
             var view = layoutInflater.inflate(R.layout.change_password_view, null)
             AlertDialog.Builder(requireContext())
                 .setView(view)
@@ -112,27 +112,27 @@ class SignedFragment : Fragment() {
                 .show()
         }
 
-        binding.signedAddPassport.setOnClickListener {
+        binding!!.signedAddPassport.setOnClickListener {
             selectImage("passport")
             buttonClicked = "passport"
         }
-        binding.signedAddSnils.setOnClickListener {
+        binding!!.signedAddSnils.setOnClickListener {
             selectImage("snils")
             buttonClicked = "snils"
         }
-        binding.signedAddCertificate.setOnClickListener {
+        binding!!.signedAddCertificate.setOnClickListener {
             selectImage("certificate")
             buttonClicked = "certificate"
         }
-        binding.logoutButton.setOnClickListener {
+        binding!!.logoutButton.setOnClickListener {
             Firebase.auth.signOut()
             findNavController().navigate(R.id.action_signedFragment_to_signInFragment)
         }
-        binding.changeButton.setOnClickListener {
-            var nameString = binding.signedName.text.toString()
-            var surnameString = binding.signedSurname.text.toString()
-            var patronymicString = binding.signedPatronymic.text.toString()
-            var birthdayString = binding.signedBirthday.text.toString()
+        binding!!.changeButton.setOnClickListener {
+            var nameString = binding!!.signedName.text.toString()
+            var surnameString = binding!!.signedSurname.text.toString()
+            var patronymicString = binding!!.signedPatronymic.text.toString()
+            var birthdayString = binding!!.signedBirthday.text.toString()
 
             if (nameString != ""
                 && surnameString != ""
@@ -160,7 +160,7 @@ class SignedFragment : Fragment() {
 
 
 
-        return binding.root
+        return binding!!.root
     }
 
 
@@ -183,30 +183,43 @@ class SignedFragment : Fragment() {
                     .addOnSuccessListener {
                         storage.downloadUrl.addOnSuccessListener {
                             url = it.toString()
-                            FirebaseThings().instanceUsers().child(Firebase.auth.uid!!).child(doc)
+
+                            FirebaseThings().instanceUsers().child(Firebase.auth.uid!!)
+                                .child(doc)
                                 .setValue(url).addOnSuccessListener {
                                     when (buttonClicked) {
-                                        "passport" -> binding.passportIsAdded.text =
-                                            "Документ добавлен"
-                                        "snils" -> binding.snilsIsAdded.text = "Документ добавлен"
-                                        "certificate" -> binding.certificateIsAdded.text =
-                                            "Документ добавлен"
+                                        "passport" -> try {
+                                            binding!!.passportIsAdded.text =
+                                                "Документ добавлен"
+                                        } catch (e: NullPointerException) { }
+                                        "snils" -> try {
+                                            binding!!.snilsIsAdded.text =
+                                                "Документ добавлен"
+                                        } catch (e: NullPointerException) { }
+                                        "certificate" -> try {
+                                            binding!!.certificateIsAdded.text =
+                                                "Документ добавлен"
+                                        } catch (e: NullPointerException) { }
                                     }
-                                    AlertDialog.Builder(requireContext())
-                                        .setMessage("Документ загружен")
-                                        .create()
-                                        .show()
+                                    try {
+                                        AlertDialog.Builder(requireContext())
+                                            .setMessage("Документ загружен")
+                                            .create()
+                                            .show()
+                                    } catch (e: NullPointerException) {
+                                    } catch (e : IllegalStateException){
+                                    }
                                 }
+
                         }
                     }
-            } else {
 
+                }
             }
         }
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        override fun onDestroyView() {
+            super.onDestroyView()
+            binding = null
+        }
     }
-}
